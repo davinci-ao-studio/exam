@@ -36,6 +36,7 @@ td {
   padding: 10px;
   padding-top: 2px;
   padding-bottom: 2px;
+  border: 1px solid black;
 }
 th {
   padding: 10px;
