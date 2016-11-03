@@ -23,6 +23,9 @@ $student_list = $dbh->query('SELECT * FROM student')
              <th>
                last_name
              </th>
+             <th>
+               ov_number
+             </th>
            </tr>
          </thead>
          <tbody>
@@ -36,6 +39,9 @@ $student_list = $dbh->query('SELECT * FROM student')
             </td>
             <td>
               <?= $student['last_name']?>
+            </td>
+            <td>
+              <?= $student['ov_number']?>
             </td>
           </tr>
           <?php endforeach; ?>
