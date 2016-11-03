@@ -1,99 +1,231 @@
--- --------------------------------------------------------
--- Host:                         127.0.0.1
--- Server versie:                5.7.14 - MySQL Community Server (GPL)
--- Server OS:                    Win64
--- HeidiSQL Versie:              9.4.0.5125
--- --------------------------------------------------------
+-- phpMyAdmin SQL Dump
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Gegenereerd op: 03 nov 2016 om 10:15
+-- Serverversie: 5.7.14
+-- PHP-versie: 5.6.25
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
+--
+-- Database: `exam`
+--
 
--- Databasestructuur van exam wordt geschreven
-CREATE DATABASE IF NOT EXISTS `exam` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `exam`;
+-- --------------------------------------------------------
 
--- Structuur van  tabel exam.answer wordt geschreven
-CREATE TABLE IF NOT EXISTS `answer` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+--
+-- Tabelstructuur voor tabel `answer`
+--
+
+CREATE TABLE `answer` (
+  `id` int(11) NOT NULL,
   `result_id` int(11) NOT NULL DEFAULT '0',
   `question_id` int(11) NOT NULL DEFAULT '0',
-  `answer` bit(1) NOT NULL DEFAULT b'0',
-  PRIMARY KEY (`id`)
+  `answer` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Data exporteren was gedeselecteerd
--- Structuur van  tabel exam.calendar wordt geschreven
-CREATE TABLE IF NOT EXISTS `calendar` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `calendar`
+--
+
+CREATE TABLE `calendar` (
+  `id` int(11) NOT NULL,
   `user_id_1` int(11) DEFAULT NULL,
   `user_id_2` int(11) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `time` time DEFAULT NULL,
   `exam_id` int(11) DEFAULT NULL,
-  `student_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `student_id` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Data exporteren was gedeselecteerd
--- Structuur van  tabel exam.exam wordt geschreven
-CREATE TABLE IF NOT EXISTS `exam` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `exam`
+--
+
+CREATE TABLE `exam` (
+  `id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='tabel which connects questions to exam type';
 
--- Data exporteren was gedeselecteerd
--- Structuur van  tabel exam.questions wordt geschreven
-CREATE TABLE IF NOT EXISTS `questions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `questions`
+--
+
+CREATE TABLE `questions` (
+  `id` int(11) NOT NULL,
   `question` varchar(50) NOT NULL DEFAULT '0',
   `exam_id` int(11) NOT NULL DEFAULT '0',
-  `score` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `score` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Data exporteren was gedeselecteerd
--- Structuur van  tabel exam.result wordt geschreven
-CREATE TABLE IF NOT EXISTS `result` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `result`
+--
+
+CREATE TABLE `result` (
+  `id` int(11) NOT NULL,
   `calendar_id` int(11) NOT NULL DEFAULT '0',
-  `score_id` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `score_id` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Data exporteren was gedeselecteerd
--- Structuur van  tabel exam.score wordt geschreven
-CREATE TABLE IF NOT EXISTS `score` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `score`
+--
+
+CREATE TABLE `score` (
+  `id` int(11) NOT NULL,
   `result_id` int(11) NOT NULL DEFAULT '0',
   `insufficient` bit(1) NOT NULL DEFAULT b'0',
   `sufficient` bit(1) NOT NULL DEFAULT b'0',
-  `good` bit(1) NOT NULL DEFAULT b'0',
-  PRIMARY KEY (`id`)
+  `good` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Data exporteren was gedeselecteerd
--- Structuur van  tabel exam.student wordt geschreven
-CREATE TABLE IF NOT EXISTS `student` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `student`
+--
+
+CREATE TABLE `student` (
+  `id` int(11) NOT NULL,
   `first_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `ov_number` int(10) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Data exporteren was gedeselecteerd
--- Structuur van  tabel exam.users wordt geschreven
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+--
+-- Gegevens worden geëxporteerd voor tabel `student`
+--
+
+INSERT INTO `student` (`id`, `first_name`, `last_name`, `ov_number`) VALUES
+(11, 'Floris', 'de Graaff', 99027458);
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL DEFAULT '0',
-  `password` varchar(50) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `password` varchar(50) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Data exporteren was gedeselecteerd
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+--
+-- Indexen voor geëxporteerde tabellen
+--
+
+--
+-- Indexen voor tabel `answer`
+--
+ALTER TABLE `answer`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexen voor tabel `calendar`
+--
+ALTER TABLE `calendar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexen voor tabel `exam`
+--
+ALTER TABLE `exam`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexen voor tabel `questions`
+--
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexen voor tabel `result`
+--
+ALTER TABLE `result`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexen voor tabel `score`
+--
+ALTER TABLE `score`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexen voor tabel `student`
+--
+ALTER TABLE `student`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexen voor tabel `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT voor geëxporteerde tabellen
+--
+
+--
+-- AUTO_INCREMENT voor een tabel `answer`
+--
+ALTER TABLE `answer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT voor een tabel `calendar`
+--
+ALTER TABLE `calendar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT voor een tabel `exam`
+--
+ALTER TABLE `exam`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT voor een tabel `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT voor een tabel `result`
+--
+ALTER TABLE `result`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT voor een tabel `score`
+--
+ALTER TABLE `score`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT voor een tabel `student`
+--
+ALTER TABLE `student`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT voor een tabel `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
