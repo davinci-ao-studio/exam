@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 03 nov 2016 om 10:15
+-- Gegenereerd op: 03 nov 2016 om 10:22
 -- Serverversie: 5.7.14
 -- PHP-versie: 5.6.25
 
@@ -33,6 +33,11 @@ CREATE TABLE `answer` (
   `answer` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Tabel leegmaken voor invoegen `answer`
+--
+
+TRUNCATE TABLE `answer`;
 -- --------------------------------------------------------
 
 --
@@ -49,6 +54,22 @@ CREATE TABLE `calendar` (
   `student_id` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Tabel leegmaken voor invoegen `calendar`
+--
+
+TRUNCATE TABLE `calendar`;
+--
+-- Gegevens worden geëxporteerd voor tabel `calendar`
+--
+
+INSERT INTO `calendar` (`id`, `user_id_1`, `user_id_2`, `date`, `time`, `exam_id`, `student_id`) VALUES
+(5, 2, 3, '2016-11-02', '06:28:23', 3, 1),
+(4, 1, 2, '2016-11-03', '14:11:39', 3, 1),
+(3, 1, 2, '2016-11-02', '06:28:23', 1, 2),
+(2, 1, 2, '2016-11-03', '18:17:54', 2, 2),
+(1, 1, 2, '2016-11-02', '09:21:53', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -59,6 +80,11 @@ CREATE TABLE `exam` (
   `id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='tabel which connects questions to exam type';
 
+--
+-- Tabel leegmaken voor invoegen `exam`
+--
+
+TRUNCATE TABLE `exam`;
 -- --------------------------------------------------------
 
 --
@@ -72,6 +98,22 @@ CREATE TABLE `questions` (
   `score` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Tabel leegmaken voor invoegen `questions`
+--
+
+TRUNCATE TABLE `questions`;
+--
+-- Gegevens worden geëxporteerd voor tabel `questions`
+--
+
+INSERT INTO `questions` (`id`, `question`, `exam_id`, `score`) VALUES
+(1, 'DID IT WORK?', 3, 5),
+(17, 'DID IT WORK AGAIN AGAIN AGAIN?', 1, 100),
+(18, 'DID IT WORK AGAIN AGAIN AGAIN?', 1, 100),
+(15, 'DID IT WORK AGAIN?', 1, 100),
+(16, 'DID IT WORK AGAIN AGAIN?', 1, 100);
+
 -- --------------------------------------------------------
 
 --
@@ -84,6 +126,11 @@ CREATE TABLE `result` (
   `score_id` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Tabel leegmaken voor invoegen `result`
+--
+
+TRUNCATE TABLE `result`;
 -- --------------------------------------------------------
 
 --
@@ -98,6 +145,11 @@ CREATE TABLE `score` (
   `good` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Tabel leegmaken voor invoegen `score`
+--
+
+TRUNCATE TABLE `score`;
 -- --------------------------------------------------------
 
 --
@@ -112,11 +164,44 @@ CREATE TABLE `student` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
+-- Tabel leegmaken voor invoegen `student`
+--
+
+TRUNCATE TABLE `student`;
+--
 -- Gegevens worden geëxporteerd voor tabel `student`
 --
 
 INSERT INTO `student` (`id`, `first_name`, `last_name`, `ov_number`) VALUES
-(11, 'Floris', 'de Graaff', 99027458);
+(1, 'Simon', 'Besseling', 99029652),
+(2, 'Thom', 'Kaptein', 99099099);
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(50) NOT NULL,
+  `username` varchar(100) COLLATE latin1_german1_ci NOT NULL,
+  `first_name` varchar(100) COLLATE latin1_german1_ci NOT NULL,
+  `last_name` varchar(100) COLLATE latin1_german1_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german1_ci;
+
+--
+-- Tabel leegmaken voor invoegen `user`
+--
+
+TRUNCATE TABLE `user`;
+--
+-- Gegevens worden geëxporteerd voor tabel `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `first_name`, `last_name`) VALUES
+(1, 'Slemmer', 'Jeroen', 'Slemmer'),
+(2, 'Scharloo', 'Jan', 'Scharloo'),
+(3, 'Feiko', 'Feiko', 'Bronsveld');
 
 -- --------------------------------------------------------
 
@@ -130,6 +215,11 @@ CREATE TABLE `users` (
   `password` varchar(50) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Tabel leegmaken voor invoegen `users`
+--
+
+TRUNCATE TABLE `users`;
 --
 -- Indexen voor geëxporteerde tabellen
 --
@@ -195,7 +285,7 @@ ALTER TABLE `answer`
 -- AUTO_INCREMENT voor een tabel `calendar`
 --
 ALTER TABLE `calendar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT voor een tabel `exam`
 --
@@ -205,7 +295,7 @@ ALTER TABLE `exam`
 -- AUTO_INCREMENT voor een tabel `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT voor een tabel `result`
 --
@@ -220,7 +310,7 @@ ALTER TABLE `score`
 -- AUTO_INCREMENT voor een tabel `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT voor een tabel `users`
 --
