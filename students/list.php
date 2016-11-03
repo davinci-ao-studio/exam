@@ -10,30 +10,24 @@ $student_list = $dbh->query('SELECT * FROM student')
     require_once('../assets/header.php');
      ?>
 
-     <section>
+     <article class="students">
        <table>
          <thead>
            <tr>
              <th>
-               id
+               Voornaam
              </th>
              <th>
-               first_name
+               Achternaam
              </th>
              <th>
-               last_name
-             </th>
-             <th>
-               ov_number
+               OV-nummer
              </th>
            </tr>
          </thead>
          <tbody>
       <?php foreach ($dbh->query('SELECT * FROM student') as $student):?>
           <tr>
-            <td>
-              <?= $student['id']?>
-            </td>
             <td>
               <?= $student['first_name']?>
             </td>
@@ -47,7 +41,7 @@ $student_list = $dbh->query('SELECT * FROM student')
           <?php endforeach; ?>
          </tbody>
        </table>
-       <a href="add.php">Add student</a>
-     </section>
+       <a href="add.php">Student toevoegen</a>
+     </article>
   </body>
 </html>
