@@ -8,8 +8,10 @@ class Exam_model extends CI_Model {
                 parent::__construct();
         }
 
-        public function test()
+        public function getData()
         {
-          echo "test model";
+          $result = $this->db->get('calendar')->result_array();
+          //$result->db->join('student', 'student_id = calendar.student.id', 'left');
+          return $result;
         }
 }

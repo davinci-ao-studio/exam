@@ -18,11 +18,12 @@ class Exam_controller extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
-	   // loads the index page in the exam Maps
-     $this->load->model("Exam_model");
-     $this->Exam_model->test();
-     echo "Hallo wereld!";
-	}
+	 public function index()
+	   {
+	      // loads the index page in the exam Maps
+	     $data = array();
+	     $this->load->model("Exam_model");
+	     $data['result'] = $this->Exam_model->getData();
+	     $this->load->view("exam/index", $data);
+	   }
 }

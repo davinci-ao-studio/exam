@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <?php
-    require_once('assets/head.php');
-    require_once('connection.php');
-  ?>
 <body>
-    <?php require_once('assets/header.php'); ?>
+    <?php //require_once('assets/header.php'); ?>
     <div class="container">
       <div class="row col-md-6">
         <main>
@@ -15,7 +11,7 @@
 
             <?php
             //Prepare and run a query
-            $getCalendar = $dbh->prepare("SELECT `calendar`.*, `user1`.`username` AS `docent1`, `user2`.`username` AS `docent2`, `student`.`first_name` AS `student_first_name`, `student`.`last_name` AS `student_last_name`
+            /*$getCalendar = $dbh->prepare("SELECT `calendar`.*, `user1`.`username` AS `docent1`, `user2`.`username` AS `docent2`, `student`.`first_name` AS `student_first_name`, `student`.`last_name` AS `student_last_name`
                                           FROM `calendar`
                                           LEFT JOIN `user` AS `user1`
                                           ON user1.id = calendar.user_id_1
@@ -26,7 +22,7 @@
                                           WHERE DATE(date)=CURDATE()
                                           ORDER BY date ASC, time ASC");
             $getCalendar->execute();
-            $calendar = $getCalendar->fetchAll();
+            $calendar = $getCalendar->fetchAll();*/
 
             //Create the table
             echo "<div class='table-responsive'>";
@@ -41,10 +37,10 @@
             echo "</thead>";
 
             echo "<tbody>";
-            foreach( $calendar as $row) {
+            foreach( $result as $row) {
               echo "<tr>";
-              echo "<td>".$row['student_first_name']."&nbsp;".$row['student_last_name']."</td>";
-              echo "<td>".$row['docent1']."<span> & </span>".$row['docent2']."</td>";
+              echo "<td>".$row['student_id']."</td>";
+              echo "<td>".$row['user_id_1']."</td>";
               echo "<td>".$row['date']."</td>";
               echo "<td>".$row['time']."</td>";
               echo "</tr>";
