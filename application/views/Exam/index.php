@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="css/master.css">
-    <meta charset="utf-8">
-    <title>Examens ICT Da Vinci College</title>
-    <link rel="stylesheet" href="/examen_automatiseren/css/master.css" type="text/css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  </head>
+  <?php require_once('assets/head.php'); ?>
   <body>
+    <?php require_once('assets/header.php'); ?>
     <div class="container">
       <div class="row col-md-6">
         <main>

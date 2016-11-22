@@ -20,10 +20,17 @@ class Exam_controller extends CI_Controller {
 	 */
 	 public function index()
 	   {
-	      // loads the index page in the exam Maps
 	     $data = array();
 	     $this->load->model("Exam_model");
-	     $data['result'] = $this->Exam_model->getData();
+	     $data['result'] = $this->Exam_model->getIndexData();
 	     $this->load->view("exam/index", $data);
 	   }
+
+		 public function students()
+			 {
+				 $data = array();
+				 $this->load->model("Exam_model");
+				 $data['result'] = $this->Exam_model->getStudentsData();
+				 $this->load->view("exam/students", $data);
+			 }
 }
