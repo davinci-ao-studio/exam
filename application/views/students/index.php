@@ -13,8 +13,14 @@
       <td><?= $student['ov_number'] ?></td>
       <td>
         <a href="#">
-          <span class="glyphicon">&#xe014;</span>
-        </a> <a href="#">Wijzig</a></td>
+          <span class="glyphicon glyphicon-remove">
+          </span>
+        </a>
+        <a href="#">
+          <span class="glyphicon glyphicon-pencil">
+          </span>
+        </a>
+      </td>
     </tr>
   <?php endforeach; ?>
   </tbody>
