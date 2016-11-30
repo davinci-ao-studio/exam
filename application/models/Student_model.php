@@ -6,14 +6,14 @@ class Student_model extends CI_Model {
     $this->load->database();
   }
 
-  public function get_students($slug = FALSE)
+  public function get_students($id = FALSE)
   {
-    if ($slug === FALSE)
+    if ($id === FALSE)
     {
       $query = $this->db->get('student');
       return $query->result_array();
     }
-    $query = $this->db->get_where('student', array('slug' => $slug));
+    $query = $this->db->get_where('student', array('id' => $id));
     return $query->row_array();
   }
   public function set_student()
@@ -29,5 +29,9 @@ class Student_model extends CI_Model {
     );
 
     return $this->db->insert('student', $data);
+  }
+  public function remove_student($id)
+  {
+    return $this->db->delete('student', array('id' => $id));
   }
 }

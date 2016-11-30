@@ -1,3 +1,4 @@
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -12,7 +13,7 @@
       <td><?= $student['first_name'] . " " . $student['last_name'] ?></td>
       <td><?= $student['ov_number'] ?></td>
       <td>
-        <a href="#">
+        <a href="/students/remove/<?= $student['id']?>" . >
           <span class="glyphicon glyphicon-remove">
           </span>
         </a>

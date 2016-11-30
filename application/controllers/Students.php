@@ -23,7 +23,7 @@ class Students extends CI_Controller {
     $this->load->helper('form');
     $this->load->library('form_validation');
 
-    $data['title'] = 'New student';
+    $data['title'] = 'Student toevoegen';
 
     $this->form_validation->set_rules('first_name', 'Voornaam', 'required');
     $this->form_validation->set_rules('last_name', 'Achternaam', 'required');
@@ -39,7 +39,13 @@ class Students extends CI_Controller {
     else
     {
       $this->student_model->set_student();
-      $this->index();
+      //$this->index();
+      header('Location: /students');
     }
+  }
+  public function remove () {
+    $data['title'] = 'Student verwijderen';
+    $this->student_model->remove_student($this->uri->segment(3));
+    header('Location: /students');
   }
 }
