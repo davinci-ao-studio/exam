@@ -1,5 +1,5 @@
 body {
-  margin: 0px;
+  /*margin: 0px;*/
 }
 nav {
   height: 40px;
@@ -26,4 +26,9 @@ nav a:hover {
 article a {
   color: black;
   text-decoration: none;
+}
+section {
+  width: 95%;
+  margin: auto;
+  margin-top: 10px;
 }

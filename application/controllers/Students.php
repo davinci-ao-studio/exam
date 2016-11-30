@@ -8,18 +8,38 @@ class Students extends CI_Controller {
     $this->load->helper('url_helper');
   }
 
-  public function index()
+  public function index($page = 'index')
   {
     $data['students'] = $this->student_model->get_students();
     $data['title'] = 'Studenten';
 
     $this->load->view('templates/header', $data);
-    $this->load->view('students/index', $data);
+    $this->load->view('students/'.$page, $data);
     $this->load->view('templates/footer');
   }
 
-  public function view($slag = NULL)
+  public function create()
   {
-    $data['students'] = $this->student_model->get_students();
+    $this->load->helper('form');
+    $this->load->library('form_validation');
+
+    $data['title'] = 'New student';
+
+    $this->form_validation->set_rules('first_name', 'Voornaam', 'required');
+    $this->form_validation->set_rules('last_name', 'Achternaam', 'required');
+    $this->form_validation->set_rules('ov_number', 'OV Nummer', 'required');
+
+    if ($this->form_validation->run() === FALSE)
+    {
+      $this->load->view('templates/header', $data);
+      $this->load->view('students/create');
+      $this->load->view('templates/footer');
+
+    }
+    else
+    {
+      $this->student_model->set_student();
+      $this->index();
+    }
   }
 }

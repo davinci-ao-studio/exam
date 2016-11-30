@@ -25,3 +25,4 @@
   <?php endforeach; ?>
   </tbody>
 </table>
+<a href="/students/create" class="btn btn-info" role="button"><span class="glyphicon glyphicon-plus"></span> Student toevoegen</a>
