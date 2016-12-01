@@ -9,7 +9,9 @@ class Home extends CI_Controller {
     if ( ! file_exists(APPPATH.'views/'.$page.'/index.php'))
     {
             // Whoops, we don't have a page for that!
+            $this->load->view('templates/header', $data);
             show_404();
+            $this->load->view('templates/footer', $data);
     }
     $data['title'] = ucfirst($page); // Capitalize the first letter
 

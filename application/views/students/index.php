@@ -13,11 +13,11 @@
       <td><?= $student['first_name'] . " " . $student['last_name'] ?></td>
       <td><?= $student['ov_number'] ?></td>
       <td>
-        <a href="/students/remove/<?= $student['id']?>" . >
+        <a href="/students/remove/<?= $student['id']?>">
           <span class="glyphicon glyphicon-remove">
           </span>
         </a>
-        <a href="#">
+        <a href="/students/update/<?= $student['id']?>">
           <span class="glyphicon glyphicon-pencil">
           </span>
         </a>

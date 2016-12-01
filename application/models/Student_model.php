@@ -34,4 +34,18 @@ class Student_model extends CI_Model {
   {
     return $this->db->delete('student', array('id' => $id));
   }
+  public function update_student($id)
+  {
+    $this->load->helper('url');
+
+    $slug = url_title($this->input->post('title'), 'dash', TRUE);
+
+    $data = array(
+      'first_name' => $this->input->post('first_name'),
+      'last_name' => $this->input->post('last_name'),
+      'ov_number' => $this->input->post('ov_number'),
+    );
+
+    return $this->db->update('student', $data, "id = ".$id);
+  }
 }

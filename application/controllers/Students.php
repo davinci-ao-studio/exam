@@ -21,18 +21,14 @@ class Students extends CI_Controller {
   public function create()
   {
     $this->load->helper('form');
-    $this->load->library('form_validation');
 
     $data['title'] = 'Student toevoegen';
+    $data['page'] = 'create';
 
-    $this->form_validation->set_rules('first_name', 'Voornaam', 'required');
-    $this->form_validation->set_rules('last_name', 'Achternaam', 'required');
-    $this->form_validation->set_rules('ov_number', 'OV Nummer', 'required');
-
-    if ($this->form_validation->run() === FALSE)
+    if (NULL == ($this->input->post('first_name')))
     {
       $this->load->view('templates/header', $data);
-      $this->load->view('students/create');
+      $this->load->view('students/form');
       $this->load->view('templates/footer');
 
     }
@@ -43,9 +39,36 @@ class Students extends CI_Controller {
       header('Location: /students');
     }
   }
-  public function remove () {
+
+  public function remove ()
+  {
     $data['title'] = 'Student verwijderen';
     $this->student_model->remove_student($this->uri->segment(3));
     header('Location: /students');
+  }
+
+  public function update()
+  {
+    $this->load->helper('form');
+
+    $id = $this->uri->segment(3);
+
+    $data['title'] = 'Student Wijzigen';
+    $data['page'] = 'update/'.$id;
+    $data['student'] = $this->student_model->get_students($id);
+
+    if (NULL == $this->input->post('first_name'))
+    {
+      $this->load->view('templates/header', $data);
+      $this->load->view('students/form');
+      $this->load->view('templates/footer');
+
+    }
+    else
+    {
+      $this->student_model->update_student($id);
+      //$this->index();
+      header('Location: /students');
+    }
   }
 }
