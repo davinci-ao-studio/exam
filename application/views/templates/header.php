@@ -12,11 +12,11 @@
     <header>
       <nav>
         <ul>
-          <a href="/home"><li class="col-md-1">Home</li></a>
-          <a href="/calendar"><li class="col-md-1">Agenda</li></a>
-          <a href="/exams"><li class="col-md-1">Examens</li></a>
-          <a href="/students"><li class="col-md-1">Studenten</li></a>
-          <a href="/teachers"><li class="col-md-1">Docenten</li></a>
+          <a href="/home"><li class="col-xs-2">Home</li></a>
+          <a href="/calendar"><li class="col-xs-2">Agenda</li></a>
+          <a href="/exams"><li class="col-xs-2">Examens</li></a>
+          <a href="/students"><li class="col-xs-2">Studenten</li></a>
+          <a href="/teachers"><li class="col-xs-2">Docenten</li></a>
         </ul>
       </nav>
     </header>

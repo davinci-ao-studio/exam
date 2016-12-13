@@ -50,6 +50,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
+$route['calendar/create(:any)'] = 'calendar/create';
+$route['calendar/create'] = 'calendar/create';
+$route['calendar/(:any)'] = 'calendar';
+$route['calendar'] = 'calendar';
+
 $route['students/update/(:any)'] = 'students/update';
 $route['students/create'] = 'students/create';
 $route['students/remove/(:any)'] = 'students/remove';

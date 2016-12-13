@@ -36,7 +36,7 @@ class Students extends CI_Controller {
     {
       $this->student_model->set_student();
       //$this->index();
-      header('Location: /students');
+      header('Location: /students/');
     }
   }
 

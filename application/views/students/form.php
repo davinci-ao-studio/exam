@@ -17,7 +17,7 @@ echo form_open('students/'.$page); ?>
     <div class="form-group row">
       <label for="ov_number" class="col-xs-2 col-form-label">Number</label>
       <div class="col-xs-10">
-        <input class="form-control" type="number" <?php echo (isset($student['ov_number']) ? 'value="'.$student['ov_number'].'"' : 'placeholder="00000000"');?> name="ov_number" required pattern="[0-9]{8}">
+        <input class="form-control" type="text" <?php echo (isset($student['ov_number']) ? 'value="'.$student['ov_number'].'"' : 'placeholder="00000000"');?> name="ov_number" minlength="8" maxlength="8" required>
       </div>
     </div>
 
