@@ -26,16 +26,15 @@ class calendar_model extends CI_Model {
 
   public function get_calendar_items ($id = FALSE) {
     if ($id === FALSE) {
-      $this->db->select('*');
+      $this->db->select('calendar.*');
+      $this->db->select('q_exam.title');
+      $this->db->select('student.first_name, student.last_name');
       $this->db->from('calendar');
       $this->db->join('exam', 'exam.id = exam_id');
       $this->db->join('student', 'student.id = student_id');
       $this->db->join('result', 'result.id = result_id');
       $this->db->join('q_exam', 'q_exam.id = q_exam_id');
       $query = $this->db->get();
-
-      $this->db->select('*');
-      $this->db->from('calendar');
       return $query->result_array();
     }
     $query = $this->db->get_where('calendar', array('id' => $id));

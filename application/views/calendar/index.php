@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <?php foreach ($calendar as $calendar_item): ?>
+    <?php foreach ($calendar as $calendar_item):?>
       <tr>
         <td><?= $calendar_item['examiner_id_1'] . ' & ' . $calendar_item['examiner_id_2']  ?></td>
         <td><?= $calendar_item['title']?></td>
@@ -21,6 +21,10 @@
           </a>
           <a href="/calendar/update/<?= $calendar_item['id']?>">
             <span class="glyphicon glyphicon-pencil">
+            </span>
+          </a>
+          <a href="/exam/conduct/<?= $calendar_item['id']?>">
+            <span class="glyphicon glyphicon-play">
             </span>
           </a>
         </td>

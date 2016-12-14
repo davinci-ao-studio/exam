@@ -1,9 +1,6 @@
-body {
-  /*margin: 0px;*/
-}
 nav {
   height: 40px;
-  border-bottom: 2px solid #DDD;
+  margin: 0px;
 }
 ul {
   margin: 0px;
@@ -36,4 +33,26 @@ hr{
   border-top: 2px dotted #DDD;
   margin-top: 30px;
   margin-bottom: 30px;
+}
+footer {
+  position:fixed;
+  background-color: #AAA;
+}
+.navbar-costum {
+  margin: 0px;
+}
+.table-costum {
+  margin:0px;
+}
+.table-costum td {
+  border-bottom: 1px solid #DDD;
+  border-collapse: collapse;
+}
+.exam {
+  border-top: 2px solid #CCC;
+  border-collapse: collapse;
+  margin:0px;
+}
+.check {
+  width: 40px !important;
 }
