@@ -14,8 +14,7 @@ class Home_model extends CI_Model {
       $this->db->from('calendar');
       $this->db->join('exam', 'exam.id = exam_id');
       $this->db->join('student', 'student.id = student_id');
-      $this->db->join('result', 'result.id = result_id');
-      $this->db->join('q_exam', 'q_exam.id = q_exam_id');
+      $this->db->join('exam_template', 'exam_template.id = exam_template_id');
       $query = $this->db->get();
       return $query->result_array();
     }

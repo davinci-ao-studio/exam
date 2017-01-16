@@ -32,15 +32,15 @@
 </table>
 <hr class="exam">
 <?php
-echo form_open('calendar');
+//var_dump($exam_questions);
+echo form_open('exam/save/'.$exam_info['id'], 'id="conduct"');
  ?>
   <table class="table">
     <thead>
       <tr>
         <th></th>
-        <th class='col-xs-1'>onv</th>
-        <th class='col-xs-1'>vold</th>
-        <th class='col-xs-1'>goed</th>
+        <th class='col-xs-1'>Ja</th>
+        <th class='col-xs-1'>Nee</th>
       </tr>
       <?php
         $last_subtitle = '';
@@ -56,32 +56,50 @@ echo form_open('calendar');
         ?>
         <tr>
           <td><?= $question['question_title'] ?></td>
-          <td class='col-xs-1'><?php if($question['possible_score']==0):?>
+          <td class='col-xs-1'>
             <div class="checkbox">
               <label>
-                <input type="checkbox">
+                <input type="radio" name='<?= $question['id'] ?>' value="1" <?= $question['answer'] == '1' ? 'checked' : ''?>>
               </label>
             </div>
-          <?php endif; ?>
           </td>
-          <td class='col-xs-1'><?php if($question['possible_score']==1):?>
+          <td class='col-xs-1'>
             <div class="checkbox">
               <label>
-                <input type="checkbox">
+                <input type="radio" name='<?= $question['id'] ?>' value="0" <?= $question['answer'] == '0' ? 'checked' : ''?>>
               </label>
             </div>
-          <?php endif; ?>
-          </td>
-          <td class='col-xs-1'><?php if($question['possible_score']==2):?>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox">
-              </label>
-            </div>
-          <?php endif; ?>
           </td>
         </tr>
       <?php endforeach; ?>
     </thead>
   </table>
+  <input type="hidden" name="submit" value="false">
 </form>
+
+<footer><button type="submit" class="btn btn-primary" form='conduct' id='save_exam'>Opslaan</button></footer>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#conduct').submit(function() {
+      var r;
+      $('tr').each(function() {
+        var inputs = $(this).find('input');
+        var first = inputs.first().prop('checked');
+        var second = inputs.last().prop('checked');
+        if (first == false && second == false) {
+          if (confirm('Weet u zeker dat u het formulier op wilt slaan? U kunt later het examen hervatten.')) {
+            r = false;
+            return r;
+          }
+        }
+      })
+      if (r != false) {
+        if (confirm('U heeft het volledige formulier ingevuld. Wilt u het formulier inleveren? Hierna kunt u het formulier niet meer aanpassen!')) {
+          $('[name="submit"]').val('true');
+        }
+      }
+
+    })
+  })
+</script>

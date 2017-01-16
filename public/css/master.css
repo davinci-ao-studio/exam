@@ -36,7 +36,10 @@ hr{
 }
 footer {
   position:fixed;
-  background-color: #AAA;
+  bottom:0;
+  left:0;
+  right:0;
+  background-color: gray;
 }
 .navbar-costum {
   margin: 0px;
@@ -55,4 +58,8 @@ footer {
 }
 .check {
   width: 40px !important;
+}
+
+#submit_exam {
+  margin: 1px 10px;
 }

@@ -5,13 +5,9 @@ class calendar_model extends CI_Model {
   }
 
   public function create () {
-    $data = array('q_exam_id' => $this->input->post('exam'));
-    $this->db->insert('result' , $data);
-
-
     $data = array(
       'student_id' => $this->input->post('student'),
-      'result_id' => $this->db->insert_id());
+      'q_exam_id' => $this->input->post('exam'));
     $this->db->insert('exam' , $data);
 
     $data = array(
@@ -27,13 +23,12 @@ class calendar_model extends CI_Model {
   public function get_calendar_items ($id = FALSE) {
     if ($id === FALSE) {
       $this->db->select('calendar.*');
-      $this->db->select('q_exam.title');
+      $this->db->select('exam_template.title');
       $this->db->select('student.first_name, student.last_name');
       $this->db->from('calendar');
       $this->db->join('exam', 'exam.id = exam_id');
       $this->db->join('student', 'student.id = student_id');
-      $this->db->join('result', 'result.id = result_id');
-      $this->db->join('q_exam', 'q_exam.id = q_exam_id');
+      $this->db->join('exam_template', 'exam_template.id = exam_template_id');
       $query = $this->db->get();
       return $query->result_array();
     }
