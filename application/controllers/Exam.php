@@ -16,10 +16,4 @@ class Exam extends CI_Controller
     $this->load->view('exam/conduct');
     $this->load->view('templates/footer');
   }
-  function save () {
-    $this->exam_model->save_exam();
-    $this->load->model('calendar_model');
-    $this->calendar_model->remove_calendar_item($this->uri->segment(3));
-    header('location://exam.local/exam');
-  }
 }
