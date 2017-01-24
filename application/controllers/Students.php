@@ -3,6 +3,7 @@ class Students extends CI_Controller {
 
   public function __construct()
   {
+    date_default_timezone_set("Europe/Amsterdam");
     parent::__construct();
     $this->load->model('student_model');
     $this->load->helper('url_helper');

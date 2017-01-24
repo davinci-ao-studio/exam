@@ -49,7 +49,8 @@ class Exam_model extends CI_Model
 
   public function save_exam()
   {
-    if ($this->input->post('submit')) {
+    if ($this->input->post('submit') == 'true') {
+      echo 'hallo';
       $this->db->where('id', $this->uri->segment(3));
       $this->db->update('exam', array('submit' => $this->input->post('submit')));
     }

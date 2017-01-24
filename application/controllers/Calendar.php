@@ -2,12 +2,14 @@
 class Calendar extends CI_Controller {
 
   public function __construct () {
+    date_default_timezone_set("Europe/Amsterdam");
     parent::__construct();
     $this->load->model('calendar_model');
   }
 
   public function index () {
     $data['calendar'] = $this->calendar_model->get_calendar_items();
+    $data['exam_started'] = $this->calendar_model->check_exam_progress();
     $data['title'] = "Agenda";
 
     $this->load->view('templates/header', $data);

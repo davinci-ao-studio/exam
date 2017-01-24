@@ -23,15 +23,17 @@ class calendar_model extends CI_Model {
   public function get_calendar_items ($id = FALSE) {
     if ($id === FALSE) {
       $this->db->select('calendar.*');
-      $this->db->select('exam.submit,exam.examiner_id_1, exam.examiner_id_2, exam.adress, exam.city, exam.id');
+      $this->db->select('exam.submit,exam.examiner_id_1, exam.examiner_id_2, exam.adress, exam.city');
       $this->db->select('exam_template.title');
       $this->db->select('student.first_name, student.last_name');
+      $this->db->select('(select count(answers.answer) from answers where answers.exam_id = exam.id) AS answer_count');
       $this->db->from('calendar');
-      $this->db->join('exam', 'exam.id = exam_id');
-      $this->db->join('student', 'student.id = student_id');
-      $this->db->join('exam_template', 'exam_template.id = exam_template_id');
+      $this->db->join('exam', 'exam.id = calendar.exam_id');
+      $this->db->join('student', 'student.id = exam.student_id');
+      $this->db->join('exam_template', 'exam_template.id = exam.exam_template_id');
       $this->db->order_by('calendar.date');
       $query = $this->db->get();
+      //return $this->db->last_query();
       return $query->result_array();
     }
     $query = $this->db->get_where('calendar', array('id' => $id));
@@ -52,5 +54,9 @@ class calendar_model extends CI_Model {
     $this->db->from($table);
     $query = $this->db->get();
     return $query->result_array();
+  }
+
+  public function check_exam_progress ()
+  {
   }
 }
