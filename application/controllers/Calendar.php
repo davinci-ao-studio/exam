@@ -26,8 +26,8 @@ class Calendar extends CI_Controller {
     $data['page'] = "create";
 
     $data['students'] = $this->calendar_model->get_table('student');
-    $data['teachers'] = $this->calendar_model->get_table('user');
-    $data['exams'] = $this->calendar_model->get_table('q_exam');
+    $data['examiner'] = $this->calendar_model->get_table('examiner');
+    $data['exams'] = $this->calendar_model->get_table('exam_template');
 
     if (NULL == $this->input->post('date'))
     {

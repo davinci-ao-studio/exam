@@ -6,29 +6,31 @@ class calendar_model extends CI_Model {
 
   public function create () {
     $data = array(
+      'adress' => $this->input->post('address'),
+      'city' => $this->input->post('city'),
+      'examiner_id_1' => $this->input->post('examiner_1'),
+      'examiner_id_2' => $this->input->post('examiner_2'),
       'student_id' => $this->input->post('student'),
-      'q_exam_id' => $this->input->post('exam'));
+      'exam_template_id' => $this->input->post('exam'));
     $this->db->insert('exam' , $data);
 
     $data = array(
-      'examiner_id_1' => $this->input->post('examiner_1'),
-      'examiner_id_2' => $this->input->post('examiner_2'),
       'exam_id' => $this->db->insert_id(),
-      'date' => $this->input->post('date'),
-      'adress' => $this->input->post('address'),
-      'city' => $this->input->post('city'));
+      'date' => $this->input->post('date'));
     $this->db->insert('calendar' , $data);
   }
 
   public function get_calendar_items ($id = FALSE) {
     if ($id === FALSE) {
       $this->db->select('calendar.*');
+      $this->db->select('exam.submit,exam.examiner_id_1, exam.examiner_id_2, exam.adress, exam.city, exam.id');
       $this->db->select('exam_template.title');
       $this->db->select('student.first_name, student.last_name');
       $this->db->from('calendar');
       $this->db->join('exam', 'exam.id = exam_id');
       $this->db->join('student', 'student.id = student_id');
       $this->db->join('exam_template', 'exam_template.id = exam_template_id');
+      $this->db->order_by('calendar.date');
       $query = $this->db->get();
       return $query->result_array();
     }

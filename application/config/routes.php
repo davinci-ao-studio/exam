@@ -68,5 +68,5 @@ $route['students/remove/(:any)'] = 'students/remove';
 $route['students/(:any)'] = 'students/view/$1';
 $route['students'] = 'students';
 
-$route['default_controller'] = 'home/view';
-$route['(:any)'] = 'home/view/$1';
+$route['default_controller'] = 'calendar';
+$route['(:any)'] = 'calendar';

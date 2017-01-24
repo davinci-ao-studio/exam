@@ -18,8 +18,11 @@ class Exam extends CI_Controller
   }
   function save () {
     $this->exam_model->save_exam();
+    $calendar_id = $this->exam_model->get_calendar_id_by_exam_id($this->uri->segment(3));
     $this->load->model('calendar_model');
-    $this->calendar_model->remove_calendar_item($this->uri->segment(3));
-    header('location://exam.local/exam');
+    if ($this->input->post('submit') == 'true') {
+      //$this->calendar_model->remove_calendar_item($calendar_id);
+    }
+    //header('location://exam.local/exam');
   }
 }
