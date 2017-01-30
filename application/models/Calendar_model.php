@@ -29,6 +29,7 @@ class calendar_model extends CI_Model {
       $this->db->select('calendar.*');
       $this->db->select('q_exam.title');
       $this->db->select('student.first_name, student.last_name');
+      $this->db->select('exam.student_id');
       $this->db->from('calendar');
       $this->db->join('exam', 'exam.id = exam_id');
       $this->db->join('student', 'student.id = student_id');

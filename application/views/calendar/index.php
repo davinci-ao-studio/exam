@@ -28,6 +28,11 @@
             </span>
           </a>
         </td>
+		<td>
+			<a target="_blank" href="/print/<?= $calendar_item['student_id']?>">
+			<span class="glyphicon glyphicon-print">
+			</span>
+		</td>
       </tr>
     <?php endforeach; ?>
   </tbody>
