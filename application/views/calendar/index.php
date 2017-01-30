@@ -6,7 +6,6 @@
       <th>Examinatoren</th>
       <th>Examen</th>
       <th>Leerling</th>
-      <th>Locatie</th>
       <th>Afneem tijd</th>
       <th></th>
     </tr>
@@ -54,7 +53,6 @@
         <td><?= $calendar_item['examiner_id_1'] . ' & ' . $calendar_item['examiner_id_2']  ?></td>
         <td><?= $calendar_item['title']?></td>
         <td><?= $calendar_item['first_name']?> <?= $calendar_item['last_name']?></td>
-        <td><?= $calendar_item['adress']?>, <?= $calendar_item['city'];?></td>
         <td><?= date("j-m-Y; G:i", strtotime($calendar_item['date']))?></td>
         <td>
           <a href="/calendar/remove/<?= $calendar_item['id']?>">
@@ -72,6 +70,11 @@
             </a>
           <?php endif; ?>
         </td>
+		<td>
+			<a target="_blank" href="/print/<?= $calendar_item['student_id']?>">
+			<span class="glyphicon glyphicon-print">
+			</span>
+		</td>
       </tr>
     <?php endforeach; ?>
   </tbody>

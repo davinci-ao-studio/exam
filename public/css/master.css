@@ -141,10 +141,7 @@ hr{
 }
 footer {
   position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background-color: gray;
+  background-color: #AAA;
 }
 
 .navbar-costum {
@@ -164,8 +161,4 @@ footer {
 }
 .check {
   width: 40px !important;
-}
-
-#submit_exam {
-  margin: 1px 10px;
 }
