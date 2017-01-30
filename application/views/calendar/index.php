@@ -76,4 +76,4 @@
     <?php endforeach; ?>
   </tbody>
 </table>
-<a href="/calendar/create" class="btn btn-info" role="button"><span class="glyphicon glyphicon-plus"></span> Agenda item toevoegen</a>
+<a href="/calendar/create" class="btn btn-primary btn-sm outline" role="button"><span class="glyphicon glyphicon-plus"></span> Agenda item toevoegen</a>
