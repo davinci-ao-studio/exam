@@ -17,13 +17,10 @@ class Exam extends CI_Controller
     $this->load->view('exam/conduct');
     $this->load->view('templates/footer');
   }
-<<<<<<< HEAD
   function save () {
     $this->exam_model->save_exam();
     $calendar_id = $this->exam_model->get_calendar_id_by_exam_id($this->uri->segment(3));
     $this->load->model('calendar_model');
     header('location://exam.local/exam');
   }
-=======
->>>>>>> pdf
 }

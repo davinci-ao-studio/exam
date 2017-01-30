@@ -22,8 +22,8 @@ $my_html='<HTML>
 	<div><p style="display:inline;padding:5px;margin-right:50px";>Kandidaat: '.$firstname.' '.$lastname.'</p>
 	<p style="display:inline;padding:5px;margin-right:50px";>OV-Nummer: '.$ovnumber.'</p></div>
 	<div><p style="display:inline;padding:5px;margin-right:50px";>Examinatoren:</p></div>
-	<div><p style="display:inline;padding:5px;margin-right:50px";>Datum: '.$ovnumber.'</p></div>
-	<div><p style="display:inline;padding:5px;margin-right:50px";>Resultaat: '.$result.'</p></div>
+	<div><p style="display:inline;padding:5px;margin-right:50px";>Datum: '.$date.'</p></div>
+	<div><p style="display:inline;padding:5px;margin-right:50px";>Resultaat:</p></div>
 </div>
 </HTML>';
 
