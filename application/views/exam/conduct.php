@@ -32,15 +32,14 @@
 </table>
 <hr class="exam">
 <?php
-echo form_open('calendar');
+echo form_open('exam/save/' . $exam_info['id']);
  ?>
   <table class="table">
     <thead>
       <tr>
         <th></th>
-        <th class='col-xs-1'>onv</th>
-        <th class='col-xs-1'>vold</th>
-        <th class='col-xs-1'>goed</th>
+        <th class='col-xs-1'>Ja</th>
+        <th class='col-xs-1'>Nee</th>
       </tr>
       <?php
         $last_subtitle = '';
@@ -56,32 +55,29 @@ echo form_open('calendar');
         ?>
         <tr>
           <td><?= $question['question_title'] ?></td>
-          <td class='col-xs-1'><?php if($question['possible_score']==0):?>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox">
-              </label>
+          <td class='col-xs-1'>
+            <div class="radio">
+              <?php if ($question['answer'] == '1'): ?>
+                <input type="radio" name="<?= $question['id'] ?>" checked></input>
+              <?php else: ?>
+                <input type="radio" name="<?= $question['id'] ?>"></input>
+              <?php endif; ?>
             </div>
-          <?php endif; ?>
           </td>
-          <td class='col-xs-1'><?php if($question['possible_score']==1):?>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox">
-              </label>
+          <td class='col-xs-1'>
+            <div class="radio">
+              <?php if ($question['answer'] == '1'): ?>
+              <input type="radio" name="<?= $question['id'] ?>" checked></input>
+            <?php else: ?>
+              <input type="radio" name="<?= $question['id'] ?>"></input>
+            <?php endif; ?>
             </div>
-          <?php endif; ?>
-          </td>
-          <td class='col-xs-1'><?php if($question['possible_score']==2):?>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox">
-              </label>
-            </div>
-          <?php endif; ?>
           </td>
         </tr>
       <?php endforeach; ?>
     </thead>
   </table>
+
+  <input type="hidden" name="submit" value="false" />
+  <button type="submit" class="btn btn-primary btn-sm outline">Opslaan</button>
 </form>

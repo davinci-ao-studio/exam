@@ -54,6 +54,8 @@ $route['print'] = 'print_pdf';
 
 $route['exam/conduct/(:any)'] = 'exam/conduct';
 $route['exam/conduct'] = 'exam/conduct';
+$route['exam/save/(:any)'] = 'exam/save';
+$route['exam/save'] = 'exam/save';
 $route['exam/(:any)'] = 'exam';
 $route['exam'] = 'exam';
 

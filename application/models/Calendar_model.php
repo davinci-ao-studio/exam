@@ -4,19 +4,17 @@ class calendar_model extends CI_Model {
     $this->load->database();
   }
 
+  /**
+   * Creates a calendar item.
+   */
   public function create () {
-    $data = array('q_exam_id' => $this->input->post('exam'));
-    $this->db->insert('result' , $data);
-
-
     $data = array(
       'adress' => $this->input->post('address'),
       'city' => $this->input->post('city'),
       'examiner_id_1' => $this->input->post('examiner_1'),
       'examiner_id_2' => $this->input->post('examiner_2'),
       'student_id' => $this->input->post('student'),
-      'exam_template_id' => $this->input->post('exam'),
-      'result_id' => $this->db->insert_id());
+      'exam_template_id' => $this->input->post('exam'));
     $this->db->insert('exam' , $data);
 
     $data = array(
@@ -25,6 +23,11 @@ class calendar_model extends CI_Model {
     $this->db->insert('calendar' , $data);
   }
 
+  /**
+   * Get all calendar items if no ID is given. Returns 1 calendar item by the ID given if given.
+   *
+   * @param exam_id $id The ID of the exam you want to return. Not required.
+   */
   public function get_calendar_items ($id = FALSE) {
     if ($id === FALSE) {
       $this->db->select('calendar.*');
@@ -44,15 +47,20 @@ class calendar_model extends CI_Model {
     return $query->row_array();
   }
 
+  /**
+   * Removes calendar item by the ID given.
+   *
+   * @param exam_id $id The ID of the exam you want to return.
+   */
   public function remove_calendar_item($id) {
     $this->db->delete('calendar', 'id = '.$id);
   }
 
-  public function set_calendar_item() {
-    $data = array(
-      'examiner_id_1' => $this->input->post('date'),
-    );
-  }
+  /**
+   * Returns table given by name.
+   *
+   * @param table_name $table_name The name of the table you want to return.
+   */
   public function get_table ($table) {
     $this->db->select('*');
     $this->db->from($table);

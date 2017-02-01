@@ -19,15 +19,10 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-<<<<<<< HEAD
             <p class="navbar-brand">ICTA - Examens</p>
-=======
-            <a class="navbar-brand" href="#">ICTA - Examens</a>
->>>>>>> pdf
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="/home">Home</a></li>
               <li><a href="/calendar">Agenda</a></li>
               <li><a href="">Examens</a></li>
               <li><a href="/students">Studenten</a></li>

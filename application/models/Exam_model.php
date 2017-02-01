@@ -24,7 +24,7 @@ class Exam_model extends CI_Model
   }
 
   public function get_exam_questions() {
-    $this->db->select('questions.question_title, questions.possible_score');
+    $this->db->select('questions.id, questions.question_title, questions.possible_score');
     $this->db->select('subtitle.title');
     $this->db->select('answers.answer');
     $this->db->from('exam');

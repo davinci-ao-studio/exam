@@ -59,6 +59,10 @@
             <span class="glyphicon glyphicon-trash">
             </span>
           </a>
+          <a target="_blank" href="/print/<?= $calendar_item['student_id']?>">
+            <span class="glyphicon glyphicon-print">
+            </span>
+          </a>
           <?php if(!$calendar_item['submit']):?>
             <a href="#">
               <span class="glyphicon glyphicon-wrench">
@@ -71,9 +75,6 @@
           <?php endif; ?>
         </td>
 		<td>
-			<a target="_blank" href="/print/<?= $calendar_item['student_id']?>">
-			<span class="glyphicon glyphicon-print">
-			</span>
 		</td>
       </tr>
     <?php endforeach; ?>
